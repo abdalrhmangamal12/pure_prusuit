@@ -28,7 +28,7 @@ class pure_prusuit{
 
    private:
    std::vector<point> path;
-   point robot_pose;
+   point robot_pose{0.0,0.0,0.0,0.0,0.0,0.0};
    point goal;
    float desired_speed=0.2;
    float tolerance_distance_to_goal =0.1;
