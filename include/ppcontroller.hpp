@@ -30,10 +30,10 @@ class pure_prusuit{
    std::vector<point> path;
    point robot_pose{0.0,0.0,0.0,0.0,0.0,0.0};
    point goal;
-   float desired_speed=0.2;
+   float desired_speed=1.2;
    float tolerance_distance_to_goal =0.1;
-   float lookahead_distance=0.3;
-   double min_angle_tolerance = 0.3;
+   float lookahead_distance=0.5;
+   double min_angle_tolerance = 0.5;
    point get_lookahead_point();
    bool goal_checker();
 

@@ -31,6 +31,15 @@ void pure_prusuit::set_path(std::vector<point> input_path){
     this->path= input_path;
 }
 pure_prusuit::point pure_prusuit::get_lookahead_point(){
+       std::remove_if(path.begin(), path.end(),
+        [&](const auto & ps) {
+            double dx = ps.pos_x - robot_pose.pos_x;
+            double dy = ps.pos_y - robot_pose.pos_y;
+            double heading_x = std::cos(robot_pose.rot_z);
+            double heading_y = std::sin(robot_pose.rot_z);
+            return (dx * heading_x + dy * heading_y) < 0;  
+        });
+       
     auto pose_it=std::find_if(path.begin(),path.end(),
                         [&](const auto & ps){
                             return  std::sqrt(std::pow((ps.pos_x -robot_pose.pos_x),2)
@@ -48,7 +57,7 @@ pure_prusuit::velocity pure_prusuit::compute_velocity() {
         std::cout << "Robot has arrived at the goal." << std::endl;
         return velocity{0.0, 0.0};
     }
-
+    
     auto carrot_point = get_lookahead_point();
     const double carrot_distance2 = std::pow((carrot_point.pos_x - robot_pose.pos_x), 2) +
                                      std::pow((carrot_point.pos_y - robot_pose.pos_y), 2);
@@ -66,7 +75,7 @@ pure_prusuit::velocity pure_prusuit::compute_velocity() {
 
     if (std::abs(yaw_error) > min_angle_tolerance) {
         output_vel.linear_vel = 0.0;
-        output_vel.angular_vel = 0.3 * std::copysign(1.0, yaw_error); 
+        output_vel.angular_vel = 0.5 * std::copysign(1.0, yaw_error); 
         std::cout << "Rotating to path with angular velocity: " << output_vel.angular_vel << std::endl;
         return output_vel;
     }

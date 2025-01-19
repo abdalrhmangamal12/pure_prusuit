@@ -20,7 +20,7 @@ int main() {
         {5, 5, 0, 0, 0, 0}};
     pp_localplanner.set_path(path);
 
-    int sim_steps = 1000;
+    int sim_steps = 2000;
     pure_prusuit::point current_state = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
     std::chrono::milliseconds sim_step(100);
 
