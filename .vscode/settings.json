@@ -1,6 +1,4 @@
 {
-<<<<<<< HEAD
-=======
     "files.associations": {
         "cctype": "cpp",
         "clocale": "cpp",
@@ -69,6 +67,5 @@
         "typeindex": "cpp",
         "typeinfo": "cpp"
     },
->>>>>>> 940fabc2f0a818b768a6d66160878285b73729a0
     "ros.distro": "humble"
 }
