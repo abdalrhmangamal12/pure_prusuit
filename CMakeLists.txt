@@ -1,3 +1,5 @@
+
+cmake_minimum_required(VERSION 3.22)
 project("pure_prusuit")
 add_executable(main src/main.cpp ) # target
 add_library(pure_prusuit_lib SHARED src/ppcontroller.cpp)

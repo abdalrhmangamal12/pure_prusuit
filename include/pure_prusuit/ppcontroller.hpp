@@ -3,30 +3,36 @@
 #include "../controller.hpp"
 # include <vector>
 # define M_PI 3.14159265358979323851
-class pure_prusuit: public controller{
+class PurePrusuit: public controller{
    public:
-   pure_prusuit()=default;
-   pure_prusuit(  float desired_speed,float des_tolerance_distance_to_goal,float des_lookahead_distance);
-   void set_robot_pose(pose current_pose);
+   PurePrusuit()=default;
+   PurePrusuit(  float desired_speed,float des_tolerance_distance_to_goal,float des_lookahead_distance);
+   // this pure prusuit class is not movable and not copyable
+   PurePrusuit(const PurePrusuit & other)=delete;
+   PurePrusuit( PurePrusuit && other)=delete;
+   PurePrusuit & operator=(const PurePrusuit & other)=delete;
+   PurePrusuit & operator=( PurePrusuit && other)=delete;
+
+   void setRobotPose(pose current_pose);
 
    void setSpeedLimits(const double & speed_limit, const bool & percentage)override;
    velocity computeVelocityCommands( const pose & robot_pose, double current_speed)override;
    void setPath(std::vector<pose> input_path)override;
 
-   void set_goal(pose input_goal);
+   void setGoal(pose input_goal);
 
    private:
-   std::vector<pose> path;
-   pose robot_pose{{0.0,0.0,0.0},
+   std::vector<pose> path_;
+   pose robot_pose_{{0.0,0.0,0.0},
                      {0.0,0.0,0.0}};
-   pose goal;
-   float desired_speed=1.2;
+   pose goal_;
+   float desired_speed_=1.2;
   
-   float tolerance_distance_to_goal =0.1;
-   float lookahead_distance=0.5;
-   double min_angle_tolerance = 0.5;
-   pose get_lookahead_point();
-   bool goal_checker();
+   float tolerance_distance_to_goal_ =0.1;
+   float lookahead_distance_=0.5;
+   double min_angle_tolerance_ = 0.5;
+   pose getCarrotPoint();
+   bool goalChecker();
 
 };
 
