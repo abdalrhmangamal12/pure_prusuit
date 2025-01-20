@@ -2,4 +2,5 @@ services:
   local_planner:
     container_name: local_planner_
     build: .
-    command: ./a.out
+    command: main
+       
