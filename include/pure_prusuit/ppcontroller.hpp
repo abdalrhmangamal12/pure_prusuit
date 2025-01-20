@@ -15,7 +15,7 @@ class pure_prusuit: public controller{
 
    void set_goal(pose input_goal);
 
-   private:
+   protected:
    std::vector<pose> path;
    pose robot_pose{{0.0,0.0,0.0},
                      {0.0,0.0,0.0}};
@@ -23,7 +23,7 @@ class pure_prusuit: public controller{
    float desired_speed=1.2;
   
    float tolerance_distance_to_goal =0.1;
-   float lookahead_distance=0.5;
+   float lookahead_distance=0.3;
    double min_angle_tolerance = 0.5;
    pose get_lookahead_point();
    bool goal_checker();
