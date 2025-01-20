@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>consumer_project</name>
+  <version>0.1.0</version>
+  <description>
+    A simple library example for ROS 2, built with pure CMake.
+  </description>
+  <maintainer email="your_email@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+<depend>pure_prusuit</depend>
+  <export>
+    <!-- Export build type to support colcon builds -->
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
