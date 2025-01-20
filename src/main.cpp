@@ -6,24 +6,31 @@
 #include <iostream>
 
 int main() {
+
   
     PurePrusuit pp_localplanner;
     pp_localplanner.setGoal({5.0, 5.0, 0.0, 0.0, 0.0, 0.0});
 
+
     controller &local_planner=pp_localplanner;
     // Define the path
+
     auto path = std::vector<controller::pose>{
+
         {1, 1, 0, 0, 0, 0},
         {2, 2, 0, 0, 0, 0},
         {3, 3, 0, 0, 0, 0},
         {4, 4, 0, 0, 0, 0},
         {5, 5, 0, 0, 0, 0}};
+
     local_planner.setPath(path);
     int sim_steps = 2000;
     controller::pose current_state = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+
     std::chrono::milliseconds sim_step(100);
 
     for (int i = 0; i <= sim_steps; i++) {
+
 
         auto current_vel = local_planner.computeVelocityCommands(current_state,0.0);
 

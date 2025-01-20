@@ -9,3 +9,4 @@ RUN curl -s https://packagecloud.io/install/repositories/dirk-thomas/colcon/scri
 RUN colcon build 
 #CMD [ "tail","-f","/dev/null" ]
 ENTRYPOINT [ "./mycontroller.sh" ]
+

@@ -3,6 +3,7 @@
 #include "../controller.hpp"
 # include <vector>
 # define M_PI 3.14159265358979323851
+
 class PurePrusuit: public controller{
    public:
    PurePrusuit()=default;
@@ -14,11 +15,10 @@ class PurePrusuit: public controller{
    PurePrusuit & operator=( PurePrusuit && other)=delete;
 
    void setRobotPose(pose current_pose);
-
    void setSpeedLimits(const double & speed_limit, const bool & percentage)override;
    velocity computeVelocityCommands( const pose & robot_pose, double current_speed)override;
    void setPath(std::vector<pose> input_path)override;
-
+goal_checker();
    void setGoal(pose input_goal);
 
    private:
