@@ -2,6 +2,6 @@ services:
   local_planner:
     container_name: local_planner_
     build: .
-    command: |
-      source install/setup.bash
-       main 
+
+    command: main
+
